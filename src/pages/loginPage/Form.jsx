@@ -55,6 +55,7 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
+  const [error, setError] = useState("");
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -93,7 +94,9 @@ const Form = () => {
         })
       );
       navigate("/home");
+      setError("");
     } else {
+      setError("Invalid Credentials!");
       console.log("Invalid Credentials");
     }
   };
@@ -232,6 +235,8 @@ const Form = () => {
               sx={{ gridColumn: "span 4" }}
             />
           </Box>
+
+          {error && <div>{error}</div>}
 
           {/* BUTTONS */}
           <Box>
