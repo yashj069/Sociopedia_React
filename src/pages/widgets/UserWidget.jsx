@@ -93,10 +93,13 @@ const UserWidget = ({ userId, picturePath }) => {
         <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
           <LocationOnOutlined fontSize="large" sx={{ color: main }} />
           <Typography color={medium}>{location}</Typography>
+          <EditOutlined sx={{ color: main }} />
         </Box>
         <Box display="flex" alignItems="center" gap="1rem">
           <WorkOutlineOutlined fontSize="large" sx={{ color: main }} />
+
           <Typography color={medium}>{occupation}</Typography>
+          <EditOutlined sx={{ color: main }} />
         </Box>
       </Box>
 

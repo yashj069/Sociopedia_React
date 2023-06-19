@@ -73,6 +73,7 @@ const Form = () => {
     onSubmitProps.resetForm();
 
     if (savedUser) {
+      setError("");
       setPageType("login");
     }
   };
@@ -86,6 +87,7 @@ const Form = () => {
     const loggedIn = await loggedInResponse.json();
     console.log(loggedIn);
     onSubmitProps.resetForm();
+    setError("");
     if (!loggedIn.message) {
       dispatch(
         setLogin({
@@ -236,8 +238,6 @@ const Form = () => {
             />
           </Box>
 
-          {error && <div>{error}</div>}
-
           {/* BUTTONS */}
           <Box>
             <Button
@@ -253,9 +253,11 @@ const Form = () => {
             >
               {isLogin ? "LOGIN" : "REGISTER"}
             </Button>
+            {error && <div>{error}</div>}
             <Typography
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
+                setError("");
                 resetForm();
               }}
               sx={{
